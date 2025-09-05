@@ -1,0 +1,43 @@
+CREATE DATABASE ATIVIDADE_AVALIATIVA;
+USE ATIVIDADE_AVALIATIVA;
+
+CREATE TABLE fornecedor (
+  Fcodigo INT PRIMARY KEY AUTO_INCREMENT,
+  Fnome VARCHAR(100) NOT NULL,
+  Status VARCHAR(10) DEFAULT 'Ativo',
+  Cidade VARCHAR(50)
+);
+
+CREATE TABLE peca (
+  Pcodigo INT PRIMARY KEY AUTO_INCREMENT,
+  Pnome VARCHAR(100) NOT NULL,
+  Cor VARCHAR(30) NOT NULL,
+  Peso DECIMAL(10,2) NOT NULL,
+  Cidade VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE instituicao (
+  Icodigo INT PRIMARY KEY AUTO_INCREMENT,
+  Nome VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE projeto (
+  PRcod INT PRIMARY KEY AUTO_INCREMENT,
+  PRnome VARCHAR(100) NOT NULL,
+  Cidade VARCHAR(50),
+  Icod INT,
+  FOREIGN KEY (Icod) REFERENCES Instituicao(Icodigo)
+);
+
+CREATE TABLE fornecimento (
+  Fcod INT,
+  Pcod INT,
+  PRcod INT,
+  Quantidade INT NOT NULL,
+  PRIMARY KEY (Fcod, Pcod, PRcod),
+  FOREIGN KEY (Fcod) REFERENCES fornecedor(Fcodigo),
+  FOREIGN KEY (Pcod) REFERENCES peca(Pcodigo),
+  FOREIGN KEY (PRcod) REFERENCES projeto(PRcod)
+);
+
+
