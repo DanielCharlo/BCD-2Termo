@@ -1,0 +1,10 @@
+1 - show tables;
+2 - DESCRIBE ducks;
+3 - select * from ducks;
+4 - SELECT *FROM ducks WHERE age <= 2;
+5 - select * from ducks order by age;
+6 - select * from ducks order by age limit 3;
+7 - SELECT name,age * 12 AS month FROM ducks;
+8 - SELECT DISTINCT species FROM ducks;
+9 - select * from duck_surveys using sample 10;
+10 - SELECT COUNT(*) AS total_ducks,AVG(age) AS average_age,MIN(age) AS youngest_age,MAX(age) AS oldest_age FROM ducks;
